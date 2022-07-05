@@ -1,7 +1,7 @@
 <template>
     <div>
-        <v-layout align-center justify-center class="mt-10">
-            <v-flex x12 sm8 md6 lg5 x14>
+        <v-layout  class="mt-10">
+            <v-flex>
                 <v-card>
                     <v-toolbar dark color="primary">
                         <v-toolbar-title>
