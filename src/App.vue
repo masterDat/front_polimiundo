@@ -10,51 +10,72 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
-
     <v-main>
 
-      <v-container>
+      <v-treeview dense activatable item-key="name" return-object @update:active="goRoute" open-on-click :items="items">
+        <template v-slot:prepend="{ item, open }">
+          <v-icon v-if="!item.file">
+            {{ open ? "mdi-folder-open" : "mdi-folder" }}
+          </v-icon>
+          <v-icon v-else>
+            {{ files[item.file] }}
+          </v-icon>
+        </template>
+      </v-treeview>
 
-        <v-layout row>
-          <v-flex md7>
-            <searchTickets />
-          </v-flex>
- <v-spacer></v-spacer>
+ <v-container>
+      <v-layout row align-center justify-center>
+        <v-flex md7>
+          <router-view></router-view>
 
-
-
-          <v-flex md4>
-            <showTickets />
-          </v-flex>
-        </v-layout>
-
+        </v-flex>
+      </v-layout>
       </v-container>
-
-
-
-
-
-
-
-
     </v-main>
   </v-app>
 </template>
 
 <script>
-import searchTickets from './components/tickets/searchTickets';
-import showTickets from './components/tickets/showTickets';
+//import searchTickets from './components/tickets/searchTickets';
+//import showTickets from './components/tickets/showTickets';
 
 export default {
   name: 'App',
 
   components: {
-    searchTickets,
-    showTickets,
+    //searchTickets,
+    //showTickets,
   },
 
   data: () => ({
-    //
+    items: [
+      {
+        id: 1,
+        name: 'Tickets',
+        children: [
+          { id: 2, name: 'Buscar', route: "/search" },
+
+        ],
+      },
+
+    ],
   }),
-};
+
+
+  methods: {
+    goRoute(e) {
+      if (e.length > 0) {
+        if (this.route != e[0].name) {
+          this.$store.state.title_main = e[0].name;
+          this.$router.push(e[0].route);
+          this.route = e[0].name;
+        }
+      }
+    },
+    initiallyOpen(e) {
+      console.log(e);
+    },
+  }
+}
+
 </script>

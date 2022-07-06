@@ -36,7 +36,7 @@
 
                     <v-card-actions>
                         <v-flex>
-                            <v-btn color="primary" @click="login">Buscar</v-btn>
+                            <v-btn color="primary" @click="show">Buscar</v-btn>
 
                         </v-flex>
                     </v-card-actions>
@@ -65,6 +65,13 @@ export default {
             modal: false,
             menu2: false,
         }
+    },
+
+    methods:{
+        show(){
+            this.$router.push("/show")
+        }
+
     }
 }
 
