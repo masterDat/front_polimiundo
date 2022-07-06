@@ -1,83 +1,63 @@
 <template>
-    <div>
-        <v-btn class="mt-5" color="primary" @click="search">Regresar</v-btn>
 
-        <v-simple-table class="mt-10">
-            <template v-slot:default>
-                <thead>
-                    <tr>
-                        <th class="text-left">
-                            Name
-                        </th>
-                        <th class="text-left">
-                            Calories
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in desserts" :key="item.name">
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.calories }}</td>
-                    </tr>
-                </tbody>
-            </template>
-        </v-simple-table>
+    <div class='mt-5'>
+        <v-container>
+            <v-flex md12>
+                <v-card class="mx-auto" max-width="344" v-for="item in data" :key="item.Precio">
+                    <v-img src="https://cdn.vuetifyjs.com/images/cards/plane.jpg" height="200px"></v-img>
+
+                    <v-card-title>
+                        Datos de Tickets aereos
+                    </v-card-title>
+
+                    <v-card-subtitle>
+                        Las mejores opciones del mercado
+                    </v-card-subtitle>
+
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+
+                        <v-btn icon>
+                            <v-icon>{{ show ? 'mdi-airplane' : 'mdi-chevron-down' }}</v-icon>
+                        </v-btn>
+                    </v-card-actions>
+
+                    <v-expand-transition>
+                        <div v-show="show">
+                            <v-divider></v-divider>
+
+                            <v-card-text>
+                                <div><b>Aerolinea : </b> {{ item.Aerolinea }}</div>
+                                <div><b>Precio : $</b> {{ item.Precio }}</div>
+                                <div><b># Escalas :</b> {{ item.Escalas }}</div>
+                                <div><b>Duracion Vuelo : </b>{{ item.Duracion }}</div>
+                            </v-card-text>
+                        </div>
+                    </v-expand-transition>
+                </v-card>
+            </v-flex>
+        </v-container>
+
+
+        <br />
     </div>
+
 </template>
 
 <script>
 export default {
     data() {
         return {
-            desserts: [
-                {
-                    name: 'Frozen Yogurt',
-                    calories: 159,
-                },
-                {
-                    name: 'Ice cream sandwich',
-                    calories: 237,
-                },
-                {
-                    name: 'Eclair',
-                    calories: 262,
-                },
-                {
-                    name: 'Cupcake',
-                    calories: 305,
-                },
-                {
-                    name: 'Gingerbread',
-                    calories: 356,
-                },
-                {
-                    name: 'Jelly bean',
-                    calories: 375,
-                },
-                {
-                    name: 'Lollipop',
-                    calories: 392,
-                },
-                {
-                    name: 'Honeycomb',
-                    calories: 408,
-                },
-                {
-                    name: 'Donut',
-                    calories: 452,
-                },
-                {
-                    name: 'KitKat',
-                    calories: 518,
-                },
-            ],
+            data: [],
+            show: true,
         }
     },
 
-    methods: {
-        search(){
-            this.$router.push("/search")
-        }
+    mounted() {
+        this.data = this.$store.state.data;
+        console.log(this.data)
     }
+
+
 }
 </script>

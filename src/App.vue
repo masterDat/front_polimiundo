@@ -5,10 +5,10 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
-        <span class="mr-2">Latest Release</span>
+     
+        <span class="mr-2">Pasajes Aereos Beta</span>
         <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      
     </v-app-bar>
     <v-main>
 
@@ -53,7 +53,8 @@ export default {
         id: 1,
         name: 'Tickets',
         children: [
-          { id: 2, name: 'Buscar', route: "/search" },
+          { id: 2, name: 'Buscador', route: "/search" },
+          { id: 3, name: 'Resultados', route: "/show" },
 
         ],
       },

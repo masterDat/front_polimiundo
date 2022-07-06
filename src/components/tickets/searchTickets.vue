@@ -15,7 +15,7 @@
                         <v-menu v-model="fechaSalida" :close-on-content-click="false" :nudge-right="40"
                             transition="scale-transition" offset-y min-width="auto">
                             <template v-slot:activator="{ on, attrs }">
-                                <v-text-field outlined v-model="date" label="Picker without buttons" prepend-icon="mdi-calendar"
+                                <v-text-field outlined v-model="date" label="Fecha Salida" prepend-icon="mdi-calendar"
                                     readonly v-bind="attrs" v-on="on"></v-text-field>
                             </template>
                             <v-date-picker v-model="date" @input="fechaSalida = false"></v-date-picker>
@@ -24,7 +24,7 @@
                         <v-menu  v-model="fechaLlegada" :close-on-content-click="false" :nudge-right="40"
                             transition="scale-transition" offset-y min-width="auto">
                             <template v-slot:activator="{ on, attrs }">
-                                <v-text-field outlined v-model="date2" label="Picker without buttons" prepend-icon="mdi-calendar"
+                                <v-text-field outlined v-model="date2" label="Fecha Llegada" prepend-icon="mdi-calendar"
                                     readonly v-bind="attrs" v-on="on"></v-text-field>
                             </template>
                             <v-date-picker v-model="date2" @input="fechaLlegada = false"></v-date-picker>
@@ -36,7 +36,7 @@
 
                     <v-card-actions>
                         <v-flex>
-                            <v-btn color="primary" @click="show">Buscar</v-btn>
+                            <v-btn color="primary" disabled>Buscar</v-btn>
 
                         </v-flex>
                     </v-card-actions>
@@ -67,12 +67,7 @@ export default {
         }
     },
 
-    methods:{
-        show(){
-            this.$router.push("/show")
-        }
-
-    }
+   
 }
 
 </script>
